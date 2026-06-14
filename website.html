@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UzTour - O'zbekiston Bo'ylab Sayohat va Faoliyatlar</title>
+  <meta name="description" content="O'zbekiston bo'ylab eng qiziqarli turlar, milliy master-klasslar va transport xizmatlarini onlayn bron qiling. Samarqand, Buxoro, Xiva va boshqa yo'nalishlar.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF9F1C;
+      --primary-hover: #E78200;
+      --dark-bg: #0B0F19;
+      --card-bg: #FFFFFF;
+      --text-main: #1F2937;
+      --text-muted: #6B7280;
+      --bg-light: #F9FAFB;
+      --border-color: #E5E7EB;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.1), 0 12px 16px -8px rgba(0, 0, 0, 0.08);
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .search-box {
+      flex: 0 1 500px;
+      display: flex;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 18px;
+      padding-right: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.08);
+      outline: none;
+      border-radius: 30px;
+      font-size: 14px;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 159, 28, 0.2);
+    }
+
+    .search-box button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      bottom: 5px;
+      padding: 0 18px;
+      border: none;
+      background-color: var(--primary);
+      color: var(--dark-bg);
+      cursor: pointer;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: var(--transition);
+    }
+
+    .search-box button:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .account-btn {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .account-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    .register-btn {
+      background: var(--primary);
+      color: var(--dark-bg);
+      border: 1px solid var(--primary);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .register-btn:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+      background-image: radial-gradient(var(--primary) 1px, transparent 0);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #94A3B8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .main-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Category Filters */
+    .filters-container {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .filter-btn {
+      background-color: white;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--primary);
+      color: var(--dark-bg);
+      border-color: var(--primary);
+      font-weight: 600;
+      transform: translateY(-2px);
+    }
+
+    /* Grid Layout */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    /* Modern SaaS Style Card with Fixed Height */
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 480px; /* Aligned card height */
+      border: 1px solid rgba(229, 231, 235, 0.6);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px); /* Lift card 5px */
+      box-shadow: var(--shadow-lg); /* Enhanced shadow on hover */
+    }
+
+    /* Image Container (identical dimensions) */
+    .card-media {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      overflow: hidden;
+      background-color: #E2E8F0;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    /* Video playing by default (faded in over the image once loaded) */
+    .card-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0; /* Starts hidden, fades in dynamically once ready */
+      transition: opacity 0.8s ease, transform 0.4s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Active hover states driven by CSS classes */
+    .card:hover .card-img {
+      transform: scale(1.1);
+    }
+
+    .card:hover .card-video {
+      transform: scale(1.1);
+    }
+
+    .card:hover .dark-overlay {
+      opacity: 1;
+    }
+
+    .card-content {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-category-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary-hover);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .card-content h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0F172A;
+    }
+
+    .card-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-content button {
+      width: 100%;
+      padding: 11px;
+      background-color: var(--primary);
+      color: var(--dark-bg);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto; /* Push buttons to the very bottom */
+    }
+
+    .card-content button:hover {
+      background-color: var(--primary-hover);
+      color: white;
+    }
+
+    /* Hidden Cards for filtering & search */
+    .card.hidden {
+      display: none !important;
+    }
+
+    /* Empty search result message */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      font-size: 18px;
+      display: none;
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: #94A3B8;
+      text-align: center;
+      padding: 30px;
+      margin-top: 60px;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer strong {
+      color: var(--primary);
+    }
+
+    /* Responsiveness adjustments */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .search-box {
+        width: 100%;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+      .hero p {
+        font-size: 15px;
+      }
+      .main-container {
+        padding: 20px 15px;
+      }
+      .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        height: auto;
+        min-height: 440px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <div class="logo" id="header-logo">UzTour</div>
+  </div>
+  <div class="search-box">
+    <input type="text" id="search-input" placeholder="Sayohat, faoliyat yoki transferni qidiring...">
+    <button id="search-btn">Izlash</button>
+  </div>
+  <div class="header-actions">
+    <a href="account.html" class="account-btn" style="text-decoration: none;">Kirish</a>
+    <a href="register.html" class="register-btn" style="text-decoration: none;">Ro'yxatdan O'tish</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <h1 id="hero-title">O'zbekiston Bo'ylab Sayohat va Faoliyatlar</h1>
+  <p id="hero-desc">Tarixiy shaharlar bo'ylab turlar, qiziqarli sarguzashtlar, milliy master-klasslar va qulay transport transferlarini onlayn bron qiling.</p>
+</section>
+
+<div class="main-container">
+  <!-- Dynamic Category Filters -->
+  <div class="filters-container" id="filters-container">
+    <button class="filter-btn active" data-category="all" id="btn-cat-all">Barchasi</button>
+    <button class="filter-btn" data-category="tours" id="btn-cat-tours">Turlar va Ekskursiyalar</button>
+    <button class="filter-btn" data-category="activities" id="btn-cat-activities">Faoliyatlar va Sarguzashtlar</button>
+    <button class="filter-btn" data-category="food" id="btn-cat-food">Taomlar va Master-klasslar</button>
+    <button class="filter-btn" data-category="transport" id="btn-cat-transport">Transport va Transferlar</button>
+  </div>
+
+  <!-- Services Grid -->
+  <section class="services-grid" id="services-grid">
+    
+    <!-- Tour 1: Registon maydoni sayohati -->
+    <div class="card" data-category="tours" id="service-card-1">
+      <div class="card-media">
+        <img class="card-img" src="https://uzbek-trip.vercel.app/images/locations/registan.webp" alt="Registon maydoni sayohati">
+        <video class="card-video" src="video/samarkand.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Turlar va Ekskursiyalar</span>
+        <h3>Registon maydoni sayohati</h3>
+        <p>Uchta muhtasham madrasadan iborat qadimiy Samarqandning yuragi bo'ylab unutilmas tur.</p>
+        <button id="book-btn-1">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 2: Go'ri Amir maqbarasi sayohati -->
+    <div class="card" data-category="tours" id="service-card-2">
+      <div class="card-media">
+        <img class="card-img" src="https://uzbek-trip.vercel.app/images/locations/gureamir.webp" alt="Go'ri Amir maqbarasi sayohati">
+        <video class="card-video" src="video/samarkand.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Turlar va Ekskursiyalar</span>
+        <h3>Go'ri Amir maqbarasi sayohati</h3>
+        <p>Amir Temur (Tamerlan) ning so'nggi qo'nim topgan joyi, me'moriy durdona.</p>
+        <button id="book-btn-2">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 3: Shohi Zinda majmuasi sayohati -->
+    <div class="card" data-category="tours" id="service-card-3">
+      <div class="card-media">
+        <img class="card-img" src="https://uzbek-trip.vercel.app/images/locations/shahizinda.webp" alt="Shohi Zinda majmuasi sayohati">
+        <video class="card-video" src="video/samarkand.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Turlar va Ekskursiyalar</span>
+        <h3>Shohi Zinda majmuasi sayohati</h3>
+        <p>Moviy gumbazli maqbaralardan iborat hayratlanarli xiyobonga ekskursiya.</p>
+        <button id="book-btn-3">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 4: Bibi Xonim masjidi sayohati -->
+    <div class="card" data-category="tours" id="service-card-4">
+      <div class="card-media">
+        <img class="card-img" src="https://uzbek-trip.vercel.app/images/locations/bibikhanym.webp" alt="Bibi Xonim masjidi sayohati">
+        <video class="card-video" src="video/samarkand.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Turlar va Ekskursiyalar</span>
+        <h3>Bibi Xonim masjidi sayohati</h3>
+        <p>Amir Temurning sevimli rafiqasi sharafiga qurilgan XV asrning eng yirik masjidi.</p>
+        <button id="book-btn-4">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 5: Ulug'bek rasadxonasi sayohati -->
+    <div class="card" data-category="tours" id="service-card-5">
+      <div class="card-media">
+        <img class="card-img" src="https://uzbek-trip.vercel.app/images/locations/ulughbeg.webp" alt="Ulug'bek rasadxonasi sayohati">
+        <video class="card-video" src="video/samarkand.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Turlar va Ekskursiyalar</span>
+        <h3>Ulug'bek rasadxonasi sayohati</h3>
+        <p>1420-yilda qurilgan ushbu rasadxona islom dunyosining ajoyib mo'jizalaridan biridir.</p>
+        <button id="book-btn-5">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 6: Urgut tog' bozori sarguzashti -->
+    <div class="card" data-category="activities" id="service-card-6">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781359615231_w1x5i1xbauf.jpg" alt="Urgut tog' bozori sarguzashti">
+        <video class="card-video" src="video/zaamin.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Faoliyatlar va Sarguzashtlar</span>
+        <h3>Urgut bozori va adirlari sarguzashti</h3>
+        <p>Bozorda an'anaviy so'zanalar bilan tanishish va go'zal tog' adirlari bo'ylab trekking.</p>
+        <button id="book-btn-6">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 7: Omonqo'ton dovoni turi -->
+    <div class="card" data-category="activities" id="service-card-7">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781359721535_wk956c5sf5.jpg" alt="Omonqo'ton dovoni turi">
+        <video class="card-video" src="video/zaamin.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Faoliyatlar va Sarguzashtlar</span>
+        <h3>Omonqo'ton dovoni va qarag'aylari</h3>
+        <p>Qadimiy g'orlar va toza buloqlarga ega muhtasham qarag'ayzor hamda tog' dovoni.</p>
+        <button id="book-btn-7">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 8: Konigil qog'oz fabrikasi -->
+    <div class="card" data-category="food" id="service-card-8">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436461119_hgu2pge294e.webp" alt="Konigil qog'oz fabrikasi">
+        <video class="card-video" src="video/paper.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Taomlar va Master-klasslar</span>
+        <h3>Konigil qog'oz fabrikasi darsi</h3>
+        <p>Samarqand tut qog'ozini tayyorlashning qadimiy san'ati va xattotlik darslari.</p>
+        <button id="book-btn-8">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 9: Boqiy Shahar madaniy majmuasi -->
+    <div class="card" data-category="tours" id="service-card-9">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781435967000_wi3h9u7y8ne.jpg" alt="Boqiy Shahar madaniy majmuasi">
+        <video class="card-video" src="video/samarkand.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Turlar va Ekskursiyalar</span>
+        <h3>Boqiy Shahar ekskursiyasi</h3>
+        <p>Qadimiy Sharq shahri muhitini qayta yaratuvchi ajoyib etnografik majmua bo'ylab sayr.</p>
+        <button id="book-btn-9">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 10: Toshkent Magic City dam olish turi -->
+    <div class="card" data-category="activities" id="service-card-10">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781437859197_3shyadkd0hs.jpg" alt="Toshkent Magic City dam olish turi">
+        <video class="card-video" src="video/amirsoy.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Faoliyatlar va Sarguzashtlar</span>
+        <h3>Toshkent Magic City dam olish turi</h3>
+        <p>Yevropa uslubidagi ko'ngilochar bog', attraksionlar va mashhur favvoralar shousi.</p>
+        <button id="book-btn-10">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 11: Milliy palov markazi master-klassi -->
+    <div class="card" data-category="food" id="service-card-11">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436367591_dgjlmejj25h.jpg" alt="Milliy palov markazi master-klassi">
+        <video class="card-video" src="video/cooking.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Taomlar va Master-klasslar</span>
+        <h3>Milliy palov markazi master-klassi</h3>
+        <p>Gigant qozonlarda Samarqand palovi pishishini kuzatish va unutilmas milliy tushlik.</p>
+        <button id="book-btn-11">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 12: Samarqand nonvoyxonasi master-klassi -->
+    <div class="card" data-category="food" id="service-card-12">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436260277_q4bf3g1ach.webp" alt="Samarqand nonvoyxonasi master-klassi">
+        <video class="card-video" src="video/cooking.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Taomlar va Master-klasslar</span>
+        <h3>Samarqand nonvoyxonasi master-klassi</h3>
+        <p>Mashhur Samarqand nonini tandirda pishirish va non yopish sirlari bilan tanishish.</p>
+        <button id="book-btn-12">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 13: Karimbek restorani milliy kechasi -->
+    <div class="card" data-category="food" id="service-card-13">
+      <div class="card-media">
+        <img class="card-img" src="https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436047197_cn0us4kl04a.webp" alt="Karimbek restorani milliy kechasi">
+        <video class="card-video" src="video/cooking.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Taomlar va Master-klasslar</span>
+        <h3>Karimbek restorani milliy kechasi</h3>
+        <p>An'anaviy kaboblar, milliy taomlar va jonli sharqona musiqa dasturi.</p>
+        <button id="book-btn-13">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 14: Tashkent-Samarkand Afrosiyob VIP Transfer -->
+    <div class="card" data-category="transport" id="service-card-14">
+      <div class="card-media">
+        <img class="card-img" src="https://images.unsplash.com/photo-1541417904950-b855846fe074?auto=format&fit=crop&w=400&h=300&q=80" alt="Toshkent - Samarqand Afrosiyob VIP Transfer">
+        <video class="card-video" src="video/train.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Transport va Transferlar</span>
+        <h3>Toshkent - Samarqand Afrosiyob VIP Transfer</h3>
+        <p>Afrosiyob poyezdi chiptalari (VIP/Biznes) kafolati va vokzaldan qulay transferlar.</p>
+        <button id="book-btn-14">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- Tour 15: Tashkent Airport Transfer -->
+    <div class="card" data-category="transport" id="service-card-15">
+      <div class="card-media">
+        <img class="card-img" src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=400&h=300&q=80" alt="Toshkent Aeroport-Mehmonxona Transferi">
+        <video class="card-video" src="video/car.mp4" loop muted playsinline autoplay></video>
+        <div class="dark-overlay"></div>
+      </div>
+      <div class="card-content">
+        <span class="card-category-tag">Transport va Transferlar</span>
+        <h3>Toshkent Aeroport-Mehmonxona Transferi</h3>
+        <p>Aeroportdan kutib olish, ism yozilgan tablichka va mehmonxonagacha eltib qo'yish.</p>
+        <button id="book-btn-15">Buyurtma Berish</button>
+      </div>
+    </div>
+
+    <!-- No results message -->
+    <div class="no-results" id="no-results-msg">
+      Qidiruv bo'yicha mos keladigan sayohat yoki faoliyat turi topilmadi.
+    </div>
+
+  </section>
+</div>
+
+<footer>
+  © 2026 <strong>UzTour</strong>. Barcha huquqlar himoyalangan. O'zbekiston sayohat portali.
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+    const noResultsMsg = document.getElementById('no-results-msg');
+    
+    // Fallback Image URL
+    const fallbackImage = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&h=300&q=80';
+
+    // Image error fallback handling
+    const images = document.querySelectorAll('.card-img');
+    images.forEach(img => {
+      img.addEventListener('error', function() {
+        console.warn('Image failed to load. Displaying fallback:', this.src);
+        this.src = fallbackImage;
+      });
+      // Handle cached error states
+      if (img.naturalWidth === 0) {
+        img.src = fallbackImage;
+      }
+    });
+
+    // Lazy fade-in for videos when they load
+    const videos = document.querySelectorAll('.card-video');
+    videos.forEach(video => {
+      video.addEventListener('canplay', function() {
+        this.style.opacity = '1';
+      });
+      // Handle cached loaded state
+      if (video.readyState >= 3) {
+        video.style.opacity = '1';
+      }
+    });
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    // Filtering & Searching Logic
+    function applyFilterAndSearch() {
+      let matchCount = 0;
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+        const matchesSearch = (title.includes(searchQuery) || desc.includes(searchQuery));
+
+        if (matchesCategory && matchesSearch) {
+          card.classList.remove('hidden');
+          matchCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (matchCount === 0) {
+        noResultsMsg.style.display = 'block';
+      } else {
+        noResultsMsg.style.display = 'none';
+      }
+    }
+
+    // Category Filter Clicks
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active button style
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        currentCategory = btn.getAttribute('data-category');
+        applyFilterAndSearch();
+      });
+    });
+
+    // Live search input
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      applyFilterAndSearch();
+    });
+
+    // Search button click
+    searchBtn.addEventListener('click', () => {
+      searchQuery = searchInput.value.toLowerCase().trim();
+      applyFilterAndSearch();
+    });
+
+    // Configure action buttons and navigation for each card dynamically
+    cards.forEach(card => {
+      const id = card.id.replace('service-card-', '');
+      const btn = card.querySelector('.card-content button');
+      if (btn) {
+        // Create a grid wrapper for dual buttons
+        const actionsDiv = document.createElement('div');
+        actionsDiv.style.display = 'grid';
+        actionsDiv.style.gridTemplateColumns = '1fr 1fr';
+        actionsDiv.style.gap = '10px';
+        actionsDiv.style.marginTop = 'auto'; // Push actions to the bottom
+        
+        // Clone primary button to inherit core styles
+        const bookBtn = btn.cloneNode(true);
+        bookBtn.textContent = "Buyurtma";
+        bookBtn.style.padding = '10px 5px';
+        bookBtn.style.fontSize = '12px';
+        bookBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          // Redirect to the booking section of the details page
+          window.location.href = `service-detail.html?id=${id}#booking-title`;
+        });
+        
+        // Create Details outline button
+        const detailsBtn = document.createElement('a');
+        detailsBtn.href = `service-detail.html?id=${id}`;
+        detailsBtn.textContent = "Batafsil";
+        detailsBtn.style.textDecoration = 'none';
+        detailsBtn.style.textAlign = 'center';
+        detailsBtn.style.display = 'flex';
+        detailsBtn.style.justifyContent = 'center';
+        detailsBtn.style.alignItems = 'center';
+        detailsBtn.style.padding = '10px 5px';
+        detailsBtn.style.fontSize = '12px';
+        detailsBtn.style.fontWeight = '600';
+        detailsBtn.style.borderRadius = '8px';
+        detailsBtn.style.border = '1px solid var(--border-color)';
+        detailsBtn.style.color = 'var(--text-main)';
+        detailsBtn.style.backgroundColor = 'transparent';
+        detailsBtn.style.transition = 'var(--transition)';
+        
+        // Dynamic hover styles for details button
+        detailsBtn.addEventListener('mouseenter', () => {
+          detailsBtn.style.backgroundColor = 'var(--border-color)';
+          detailsBtn.style.borderColor = 'var(--text-muted)';
+        });
+        detailsBtn.addEventListener('mouseleave', () => {
+          detailsBtn.style.backgroundColor = 'transparent';
+          detailsBtn.style.borderColor = 'var(--border-color)';
+        });
+        
+        actionsDiv.appendChild(bookBtn);
+        actionsDiv.appendChild(detailsBtn);
+        
+        // Replace single button with dual-button layout
+        btn.parentNode.replaceChild(actionsDiv, btn);
+      }
+      
+      // Make media container and title clickable for details page navigation
+      const media = card.querySelector('.card-media');
+      const titleEl = card.querySelector('.card-content h3');
+      
+      if (media) {
+        media.style.cursor = 'pointer';
+        media.addEventListener('click', () => {
+          window.location.href = `service-detail.html?id=${id}`;
+        });
+      }
+      if (titleEl) {
+        titleEl.style.cursor = 'pointer';
+        titleEl.style.transition = 'color var(--transition)';
+        titleEl.addEventListener('mouseenter', () => {
+          titleEl.style.color = 'var(--primary-hover)';
+        });
+        titleEl.addEventListener('mouseleave', () => {
+          titleEl.style.color = '#0F172A';
+        });
+        titleEl.addEventListener('click', () => {
+          window.location.href = `service-detail.html?id=${id}`;
+        });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

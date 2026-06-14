@@ -1,0 +1,106 @@
+[
+  {
+    "title": "Registon maydoni",
+    "description": "Uchta muhtasham madrasadan iborat qadimiy Samarqandning yuragi.",
+    "image": "https://uzbek-trip.vercel.app/images/locations/registan.webp",
+    "duration": "2 soat",
+    "price": "$4.50",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Go&#x27;ri Amir maqbarasi",
+    "description": "Amir Temur (Tamerlan) ning so&#x27;nggi qo&#x27;nim topgan joyi, me&#x27;moriy durdona.",
+    "image": "https://uzbek-trip.vercel.app/images/locations/gureamir.webp",
+    "duration": "1.5 soat",
+    "price": "$2.50",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Shohi Zinda",
+    "description": "Moviy gumbazli maqbaralardan iborat hayratlanarli xiyobon.",
+    "image": "https://uzbek-trip.vercel.app/images/locations/shahizinda.webp",
+    "duration": "1.5 soat",
+    "price": "$3.50",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Bibi Xonim masjidi",
+    "description": "Amir Temurning sevimli rafiqasi sharafiga qurilgan XV asrning eng yirik masjidlaridan biri.",
+    "image": "https://uzbek-trip.vercel.app/images/locations/bibikhanym.webp",
+    "duration": "1 soat",
+    "price": "$2.50",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Ulug&#x27;bek rasadxonasi",
+    "description": "1420-yilda qurilgan ushbu rasadxona islom dunyosining ajoyib mo&#x27;jizalaridan biri bo&#x27;lgan.",
+    "image": "https://uzbek-trip.vercel.app/images/locations/ulughbeg.webp",
+    "duration": "1 soat",
+    "price": "$2.00",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Urgut tog&#x27; bozori va adirlari",
+    "description": "Bozorda an&#x27;anaviy hunarmandchilik bilan tanishing va Urgutning go&#x27;zal tog&#x27; tizmalari bo&#x27;ylab sayr qiling.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781359615231_w1x5i1xbauf.jpg",
+    "duration": "4 soat",
+    "price": "bepul",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Omonqo&#x27;ton dovoni va qarag&#x27;aylari",
+    "description": "Qadimiy g&#x27;orlar va toza buloqlarga ega muhtasham qarag&#x27;ayzor hamda tog&#x27; dovoni.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781359721535_wk956c5sf5.jpg",
+    "duration": "3 soat",
+    "price": "bepul",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Konigil qog&#x27;oz fabrikasi",
+    "description": "Samarqand tut qog&#x27;ozini tayyorlashning qadimiy san&#x27;atini namoyish etuvchi tinch eko-qishloq.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436461119_hgu2pge294e.webp",
+    "duration": "2 soat",
+    "price": "$2.00",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Boqiy Shahar (Abadiy Shahar)",
+    "description": "Boqiy Shahar, yoki &#x27;Abadiy Shahar&#x27;, – bu Samarqand Silk Road sayyohlik markazi tarkibidagi keng madaniy-etnografik majmua. U tashrif buyuruvchilarga qadimiy Sharq shahri muhitini qayta yaratib, noyob va immersiv tajriba taqdim etadi. Majmua tarixiy Samarqanddan ilhomlanib, diqqat bilan loyihalashtirilgan me&#x27;moriy ansambllarni, jonli hovlilarni, gavjum bozorlarni va naqshinkor bezatilgan binolarni o&#x27;z ichiga oladi. Mehmonlar ko&#x27;plab hunarmandchilik ustaxonalarini o&#x27;rganishlari, kulolchilik, yog&#x27;och o&#x27;ymakorligi, ipak to&#x27;qish va miniatyura san&#x27;ati kabi an&#x27;anaviy hunarmandchilikni kuzatishlari mumkin. &#x27;Abadiy Shahar&#x27; shuningdek, o&#x27;zbek milliy taomlarini taklif qiluvchi turli kafe va restoranlar, esdalik sovg&#x27;alari do&#x27;konlari va madaniy chiqishlar uchun ochiq maydonchalarni o&#x27;z ichiga olib, O&#x27;zbekistonning boy merosi va badiiy an&#x27;analari bo&#x27;yicha keng qamrovli sayohatni ta&#x27;minlaydi.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781435967000_wi3h9u7y8ne.jpg",
+    "duration": "4 soat",
+    "price": "$1.50",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Toshkent Magic City",
+    "description": "Magic City – bu Toshkentda joylashgan ulkan zamonaviy ko&#x27;ngilochar majmua bo&#x27;lib, ba&#x27;zan noto&#x27;g&#x27;ri Samarqandda deb ataladi. U Yevropa shaharlarini eslatuvchi me&#x27;moriy uslublar bilan «shahar ichidagi shahar» noyob tajribasini taqdim etish uchun mo&#x27;ljallangan. Majmua turli yoshdagi bolalar va kattalar uchun mo&#x27;ljallangan zamonaviy attraksionlar parki, ko&#x27;plab chakana savdo nuqtalari, kafelardan to&#x27;liq xizmat ko&#x27;rsatuvchi restoranlargacha bo&#x27;lgan turli xil ovqatlanish joylari, zamonaviy kinoteatr va oqshomlarni yorituvchi jozibador musiqiy favvora shousini o&#x27;z ichiga oladi. Bu oilalar, sayyohlar va mahalliy aholi uchun jonli muhitda dam olish, xarid qilish va ko&#x27;ngil ochish uchun mashhur joydir.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781437859197_3shyadkd0hs.jpg",
+    "duration": "4 soat",
+    "price": "bepul",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Milliy palov markazi",
+    "description": "Katta qozonlarda an&#x27;anaviy retseptlar bo&#x27;yicha tayyorlangan haqiqiy Samarqand palovi.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436367591_dgjlmejj25h.jpg",
+    "duration": "1 soat",
+    "price": "bepul",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Samarqand nonvoyxonasi",
+    "description": "Nonvoylar tandirda mashhur, yaltiroq Samarqand nonlarini yopishini kuzating.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436260277_q4bf3g1ach.webp",
+    "duration": "45 daqiqa",
+    "price": "bepul",
+    "region": "Samarqand"
+  },
+  {
+    "title": "Karimbek restorani",
+    "description": "An&#x27;anaviy kabob, manti va jonli milliy musiqa taklif etuvchi ajoyib restoran.",
+    "image": "https://lurgyauxaiqcnbotpiie.supabase.co/storage/v1/object/public/location-images/locations/1781436047197_cn0us4kl04a.webp",
+    "duration": "1.5 soat",
+    "price": "bepul",
+    "region": "Samarqand"
+  }
+]

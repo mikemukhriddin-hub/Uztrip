@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ro'yxatdan o'tish - UzTour</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF9F1C;
+      --primary-hover: #E78200;
+      --dark-bg: #0B0F19;
+      --card-bg: #FFFFFF;
+      --text-main: #1F2937;
+      --text-muted: #6B7280;
+      --bg-light: #F9FAFB;
+      --border-color: #E5E7EB;
+      --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: var(--dark-bg);
+      color: white;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .back-btn {
+      background: transparent;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: white;
+      transform: translateX(-3px);
+    }
+
+    /* Container for the Form Card */
+    .auth-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .auth-bg-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.03;
+      background-image: radial-gradient(var(--primary) 1.5px, transparent 0);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .auth-card {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 580px;
+      border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(229, 231, 235, 0.8);
+      overflow: hidden;
+      z-index: 1;
+      transition: var(--transition);
+    }
+
+    /* Tabs: Customer vs Worker Registration */
+    .tab-header {
+      display: flex;
+      border-bottom: 1px solid var(--border-color);
+      background: #F8FAFC;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 18px;
+      border: none;
+      background: transparent;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+
+    .tab-btn.active {
+      color: var(--primary-hover);
+      background: white;
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--primary);
+    }
+
+    /* Form Body Padding */
+    .auth-body {
+      padding: 35px 40px;
+    }
+
+    .auth-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .auth-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .form-group input, .form-group select {
+      padding: 12px 16px;
+      border: 1px solid var(--border-color);
+      background-color: #F9FAFB;
+      border-radius: 10px;
+      outline: none;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--primary);
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(255, 159, 28, 0.15);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    /* Checkbox terms */
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 15px 0 25px 0;
+    }
+
+    .form-checkbox input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      margin-top: 2px;
+    }
+
+    .form-checkbox label {
+      font-size: 13px;
+      color: #4B5563;
+      cursor: pointer;
+      line-height: 1.4;
+    }
+
+    /* Buttons */
+    .submit-btn {
+      width: 100%;
+      padding: 13px;
+      background-color: var(--primary);
+      color: var(--dark-bg);
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(255, 159, 28, 0.2);
+    }
+
+    .submit-btn:hover {
+      background-color: var(--primary-hover);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(231, 130, 0, 0.3);
+    }
+
+    /* Switch states links */
+    .toggle-form-link {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .toggle-form-link a {
+      color: var(--primary-hover);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .toggle-form-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hidden forms */
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: var(--dark-bg);
+      color: #94A3B8;
+      text-align: center;
+      padding: 25px;
+      font-size: 13px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer strong {
+      color: var(--primary);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 15px 20px;
+      }
+      .auth-body {
+        padding: 25px 20px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="website.html" class="logo-container">
+    <div class="logo">UzTour</div>
+  </a>
+  <a href="website.html" class="back-btn">
+    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+    Bosh sahifaga qaytish
+  </a>
+</header>
+
+<div class="auth-container">
+  <div class="auth-bg-pattern"></div>
+  
+  <div class="auth-card">
+    <!-- Tab Selector -->
+    <div class="tab-header">
+      <button class="tab-btn active" id="tab-client" onclick="switchTab('client')">Sayyoh Sifatida Ro'yxatdan O'tish</button>
+      <button class="tab-btn" id="tab-worker" onclick="switchTab('worker')">Gid / Hamkor Sifatida Ro'yxatdan O'tish</button>
+    </div>
+
+    <div class="auth-body">
+      
+      <!-- ================= MIJOZ REGISTRATION FORM ================= -->
+      <div id="section-client" class="form-section active">
+        <div class="auth-title">Sayyoh hisobini yaratish</div>
+        <div class="auth-subtitle">Sayohatlar va sarguzashtlarni oson onlayn bron qilish uchun ro'yxatdan o'ting</div>
+        
+        <form onsubmit="handleFormSubmit(event, 'Sayyoh ro`yxatdan o`tdi!')">
+          <div class="form-group">
+            <label for="client-name">To'liq ism-sharifingiz</label>
+            <input type="text" id="client-name" required placeholder="Ali Valiyev">
+          </div>
+
+          <div class="form-group">
+            <label for="client-email">Email manzilingiz</label>
+            <input type="email" id="client-email" required placeholder="ali@example.com">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="client-phone">Telefon raqamingiz</label>
+              <input type="tel" id="client-phone" required placeholder="+998 90 123 45 67">
+            </div>
+            <div class="form-group">
+              <label for="client-pass">Maxfiy parol</label>
+              <input type="password" id="client-pass" required placeholder="Kamida 6 ta belgi">
+            </div>
+          </div>
+
+          <div class="form-checkbox">
+            <input type="checkbox" id="client-terms" required>
+            <label for="client-terms">Men UzTour platformasining foydalanish shartlari va xavfsizlik qoidalariga to'liq roziman</label>
+          </div>
+
+          <button type="submit" class="submit-btn">Sayyoh bo'lib ro'yxatdan o'tish</button>
+        </form>
+
+        <div class="toggle-form-link">
+          Akkauntingiz bormi? <a href="account.html">Tizimga kiring</a>
+        </div>
+      </div>
+
+      <!-- ================= WORKER REGISTRATION FORM ================= -->
+      <div id="section-worker" class="form-section">
+        <div class="auth-title">Gid / Hamkor hisobini yaratish</div>
+        <div class="auth-subtitle">UzTour platformasida hamkor bo'ling hamda turlar va sarguzashtlarni sotishni boshlang</div>
+        
+        <form onsubmit="handleFormSubmit(event, 'Hamkor muvaffaqiyatli ro`yxatdan o`tdi!')">
+          <div class="form-group">
+            <label for="worker-name">To'liq ism-sharifingiz</label>
+            <input type="text" id="worker-name" required placeholder="Sardor Rahimov">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="worker-email">Email manzilingiz</label>
+              <input type="email" id="worker-email" required placeholder="sardor@example.com">
+            </div>
+            <div class="form-group">
+              <label for="worker-phone">Telefon raqamingiz</label>
+              <input type="tel" id="worker-phone" required placeholder="+998 90 987 65 43">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="worker-category">Xizmat ko'rsatish sohangiz (Yo'nalish)</label>
+              <select id="worker-category" required>
+                <option value="" disabled selected>Kategoriyani tanlang</option>
+                <option value="tours">Turlar va Ekskursiyalar (Sayohat gidligi)</option>
+                <option value="activities">Faoliyatlar va Sarguzashtlar (Eko-turizm, Instruktorlik)</option>
+                <option value="food">Taomlar va Master-klasslar (Oshpazlik, Hunarmandlik)</option>
+                <option value="transport">Transport va Transferlar (Haydovchilik, Avtomobil ijarasi)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="worker-experience">Ish tajribangiz (Yillarda)</label>
+              <input type="number" id="worker-experience" min="0" max="50" required placeholder="Masalan: 4">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="worker-pass">Murakkab parol yarating</label>
+            <input type="password" id="worker-pass" required placeholder="Kamida 8 ta belgi">
+          </div>
+
+          <div class="form-checkbox">
+            <input type="checkbox" id="worker-terms" required>
+            <label for="worker-terms">Men UzTour hamkorlik shartnomasi shartlariga va shaxsiy ma'lumotlarni qayta ishlashga rozilik beraman</label>
+          </div>
+
+          <button type="submit" class="submit-btn">Gid / Hamkor sifatida Ro'yxatdan O'tish</button>
+        </form>
+
+        <div class="toggle-form-link">
+          Akkauntingiz bormi? <a href="account.html">Tizimga kiring</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 <strong>UzTour</strong>. Barcha huquqlar himoyalangan. O'zbekiston sayohat portali.
+</footer>
+
+<script>
+  // Tab Switcher
+  function switchTab(role) {
+    // Buttons toggling
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(`tab-${role}`).classList.add('active');
+
+    // Section views toggling
+    document.querySelectorAll('.form-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(`section-${role}`).classList.add('active');
+  }
+
+  // Form Submit Handler
+  function handleFormSubmit(e, message) {
+    e.preventDefault();
+    alert(`Tabriklaymiz!\n${message}\n\nRo'yxatdan o'tish muvaffaqiyatli yakunlandi. Bosh sahifaga yo'naltirilasiz.`);
+    window.location.href = 'website.html';
+  }
+</script>
+
+</body>
+</html>
